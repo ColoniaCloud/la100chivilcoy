@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.logo {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: logoFadeInDown 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s forwards;
+}
+
+.tagline {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-18px);
+  animation: fadeInDown 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 1.1s forwards;
+  text-shadow: 0 0 40px rgba(228, 23, 35, 0.25);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .tagline {
+    font-size: 1.6rem;
+    letter-spacing: 0.25em;
+  }
+}
+
+@keyframes logoFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Corner ribbon */
+.ribbon-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.ribbon {
+  position: absolute;
+  top: 44px;
+  right: -54px;
+  width: 220px;
+  padding: 10px 0;
+  transform: rotate(45deg);
+  background: linear-gradient(90deg, #00d4ff, #4f8fff, #00ffaa, #00c8ff, #a78bfa, #00d4ff);
+  background-size: 300% 100%;
+  animation: ribbonGradient 4s linear infinite;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.35), 0 0 6px rgba(0, 255, 170, 0.2);
+}
+
+.ribbon-marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 6s linear infinite;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #000d1a;
+  text-transform: uppercase;
+}
+
+@keyframes ribbonGradient {
+  0%   { background-position: 0% center; }
+  100% { background-position: 300% center; }
+}
+
+@keyframes marqueeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
